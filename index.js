@@ -24,7 +24,9 @@ app.post('/subirArchivo',[fichero],function(req,res){
 	}
 	res.status(200).send(output);
 });
-
+app.get('/',function(req,res){
+	res.sendFile(__dirname+'/index.html');
+});
 var server = app.listen((process.env.PORT || 5000), function () {
     console.log('listening on *:5000');
 	
