@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="http://localhost:5000/estilos">
+       
+        <!------ Include the above in your HEAD tag ---------->
+
+        <!--you can substitue the span of reauth email for a input with the email andinclude the remember me checkbox-->
+        <meta charset="UTF-8">
+
+        <title>Login</title>
+
+    </head>
+
+    <body>
+
+        <div class="container" id="home">
+            <div class="card card-container">
+                <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+               
+                
+<!--                <form class="form-signin" method="post" >-->
+                    <span id="reauth-email" class="reauth-email"> </span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                    <br>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                    <div id="remember" class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Recuerdame
+                        </label>
+                    </div>
+                    <button id="boton1" class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="login()">Iniciar Sesión</button>
+<!--                </form> /form -->
+                
+                <a href="#" class="forgot-password">
+                    ¿Olvidaste la contraseña?
+                </a>
+            </div><!-- /card-container -->
+        </div><!-- /container -->
+        
+        <div class="container" id="login_user" style="display: none"> 
+           <div class="card card-container">
+            <h1><strong>Bienvenido</strong></h1>
+            <p id="nombre_user"></p>
+           <button  id="boton2" class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </div>
+        
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="http://localhost:5000/logica"></script>
+    
+       <!--Script para conectar a Firebase-->
+        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBkZZiRRp1a3sLV4OXfm5nzyZ8QoOzO-Do",
+                authDomain: "loginbd-4da79.firebaseapp.com",
+                databaseURL: "https://loginbd-4da79.firebaseio.com",
+                projectId: "loginbd-4da79",
+                storageBucket: "loginbd-4da79.appspot.com",
+                messagingSenderId: "132077969413"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src="http://localhost:5000/index"></script>
+
+    </body>
+
+</html>
+
+

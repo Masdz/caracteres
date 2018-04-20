@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Subir Archivo</title>
-</head>
-<body>
-	<form action="http://localhost:5000/subirArchivo" method="post">
-		<input type="file" name="dato1" id="dato1"/>
-		<input type="submit">
-	</form>
-</body>
+	<head>
+	
+		<meta charset="UTF-8">
+		<title>Document</title>
+        
+	</head>
+	<body>
+		<form action="http://localhost:5000/" enctype="multipart/form-data">
+			<input type="file" name="dato1">
+			<input type="submit">
+		</form>
+
+
+		<div class="card card-container">
+			<h1><strong>Bienvenido Paps</strong></h1>
+			<p id="nombre_user"></p>
+			<button  id="boton2" class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="logout()">Cerrar Sesión</button>
+		</div>
+		 <!--Script para conectar a Firebase-->
+        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBkZZiRRp1a3sLV4OXfm5nzyZ8QoOzO-Do",
+                authDomain: "loginbd-4da79.firebaseapp.com",
+                databaseURL: "https://loginbd-4da79.firebaseio.com",
+                projectId: "loginbd-4da79",
+                storageBucket: "loginbd-4da79.appspot.com",
+                messagingSenderId: "132077969413"
+            };
+            firebase.initializeApp(config);
+        </script>
+		<script src="http://localhost:5000/index"></script>
+
+	</body>
 </html>
