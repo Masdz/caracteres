@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 var jre=require('node-jre');
-var token= require('/token/token.js');
+//var token= require('/token/token.js');
 
 var app = express();
 var fichero = multipart({uploadDir:"./ficheros"});
