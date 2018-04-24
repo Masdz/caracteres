@@ -3,7 +3,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         //Usuario logeado
 //        document.getElementById("login_user").style.display="block";
   //      document.getElementById("home").style.display="none";
-        //window.open("https://caracteres.herokuapp.com/cargaA");
+        window.open("https://caracteres.herokuapp.com/cargaA");
         var user = firebase.auth().currentUser;
         if (user!=null){
             var email_id=user.email;

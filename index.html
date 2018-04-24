@@ -31,8 +31,16 @@
                 messagingSenderId: "132077969413"
             };
             firebase.initializeApp(config);
+			function logout(){
+    			firebase.auth().signOut();
+				
+    /*().then(function() {
+        // Sign-out successful.
+    }).catch(function(error) {
+        // An error happened.
+    });*/
+				}
         </script>
-		<script src="https://caracteres.herokuapp.com/index"></script>
 
 	</body>
 </html>
