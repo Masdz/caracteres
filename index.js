@@ -2,10 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 var jre=require('node-jre');
+var firebase = require('firebase');
+var firebaseui = require('firebaceui');
 //var token= require('/token/token.js');
 
 var app = express();
 var fichero = multipart({uploadDir:"./ficheros"});
+var path=require('path');
+app.use(express.static(path.join(__dirname,'login')))
 
 app.get('/pruebas',function(req,res){
     console.log('bienvenido');
@@ -29,6 +33,7 @@ app.post('/subirArchivo',[fichero],function(req,res){
 app.get('/',function(req,res){
 	res.sendFile(__dirname+'/login/index.html');
 });
+
 app.get('/cargaA',function(req,res){
 	res.sendFile(__dirname+'/index.html');
 });

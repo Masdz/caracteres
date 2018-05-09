@@ -3,19 +3,19 @@ firebase.auth().onAuthStateChanged(function(user) {
         //Usuario logeado
 //        document.getElementById("login_user").style.display="block";
   //      document.getElementById("home").style.display="none";
-        window.open("https://caracteres.herokuapp.com/cargaA");
+        window.open("http://localhost:5000/cargaA");
         var user = firebase.auth().currentUser;
         if (user!=null){
             var email_id=user.email;
             document.getElementById("nombre_user").innerHTML=" Hola: "+email_id;
-			window.open("https://caracteres.herokuapp.com/cargaA");
+			window.open("http://localhost:5000/cargaA");
 
         }
     } else {
         // Usuario no logueado
     //    document.getElementById("login_user").style.display="none";
       //  document.getElementById("home").style.display="block";
-         //window.open("https://caracteres.herokuapp.com/");
+         //window.open("http://localhost:5000/");
     }
 });
 
