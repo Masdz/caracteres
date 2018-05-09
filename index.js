@@ -2,9 +2,18 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 var jre=require('node-jre');
-var firebase = require('firebase');
-var firebaseui = require('firebaceui');
-//var token= require('/token/token.js');
+var admin = require('firebase-admin');
+
+var serviceAccount = require(__dirname+'/credencial');
+console.log("dirname="+__dirname);
+
+var firebase=admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL: 'https://caracteres-24190.firebaseio.com/'
+  });
+
+
+var llave= "hola paps";
 
 var app = express();
 var fichero = multipart({uploadDir:"./ficheros"});
@@ -37,16 +46,31 @@ app.get('/',function(req,res){
 app.get('/cargaA',function(req,res){
 	res.sendFile(__dirname+'/index.html');
 });
-app.get('/logica',function(req,res){
-	res.sendFile(__dirname+'/login/logica.js');
+
+app.post('/auth',function(req,res){
+	var email=req.body.email;
+	var rpass=req.body.pass;
+	firebase.auth().getUserByEmail(email).then(function(user){
+		var upass=user.toJSON().body.password;
+		if(upass==rpass){
+			firebase.auth().createCustomToken(llave).then(function(token){
+				res.status(200).send(token);
+			}).catch(function(error){
+				res.status(500).send("Error al generar token "+error);
+				console.log("Error al generar token",error);
+			});
+		}else{
+			res.status(200).send("Contraseña incorrecta");
+		}
+	}).catch(function(error){
+		res.status(500).send("Error al autenticar "+error);
+		console.log("Error al autenticar",error);
+	});
+	
 });
-app.get('/index',function(req,res){
-	res.sendFile(__dirname+'/login/index.js');
-});
-app.get('/estilos',function(req,res){
-	res.sendFile(__dirname+'/login/estilos.css');
-});
+
+
 var server = app.listen((process.env.PORT || 5000), function () {
     console.log('listening on *:5000');
-	
+
 });
